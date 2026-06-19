@@ -23,9 +23,12 @@
   },
   "scripts": {
     "dev": "remotion studio",
-    "build": "remotion bundle",
+    "render": "npx remotion render AIwithJTSIntro out/final_cinematic_intro.mp4",
+    "render:turbo": "npx remotion render AIwithJTSIntro out/final_cinematic_intro.mp4 --concurrency 8 --log=warn",
+    "build": "remotion bundle src/index.ts out/bundle.js",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "safe-render": "powershell -Command \"Move-Item 'public/assets/Jts intro.mp4' 'Jts_intro.mp4.bak' -ErrorAction SilentlyContinue; npm run render; Move-Item 'Jts_intro.mp4.bak' 'public/assets/Jts intro.mp4' -ErrorAction SilentlyContinue\""
   },
   "sideEffects": [
     "*.css"

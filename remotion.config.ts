@@ -10,4 +10,12 @@ import { enableTailwind } from '@remotion/tailwind-v4';
 
 Config.setVideoImageFormat("jpeg");
 Config.setOverwriteOutput(true);
+Config.setConcurrency(require('os').cpus().length || 4);
+Config.setPixelFormat("yuv420p");
+Config.setCodec("h264");
+Config.setVideoBitrate("20M");
+
+// GPU & Hardware Acceleration
+Config.setHardwareAcceleration("if-possible");
+
 Config.overrideWebpackConfig(enableTailwind);
